@@ -1,0 +1,80 @@
+/* Navbar container */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  background-color: non-transparent; /* non-transparent background */
+  backdrop-filter: blur(6px); /* subtle blur behind navbar */
+}
+
+/* Links wrapper with rounded semi-transparent box */
+.nav-links-wrapper {
+  display: flex;
+  gap: 1.5rem; /* space between links */
+  list-style: none;
+  padding: 0.7rem 2.5rem; /* box padding */
+  background-color: rgba(20, 28, 50, 0.6); /* semi-transparent background */
+  border-radius: 20px; /* rounded corners */
+  border: 2px solid #3b5ee0; /* dark blue outline */
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25); /* subtle glow */
+}
+
+/* Individual links */
+.nav-links-wrapper li {
+  position: relative;
+}
+
+.nav-links-wrapper li a {
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color 0.3s, transform 0.2s;
+}
+
+/* Hover underline dot */
+.nav-links-wrapper li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-links-wrapper li a:hover::after {
+  background-color: #ffffff;
+  transform: translateX(-50%) translateY(2px);
+}
+
+/* Hover effect for link text */
+.nav-links-wrapper li a:hover {
+  color: #00d4ff;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-links-wrapper {
+    padding: 0.5rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .nav-links-wrapper li a {
+    font-size: 0.95rem;
+  }
+}
+/* Navbar.css or App.css */
+html {
+  scroll-behavior: smooth;
+}
