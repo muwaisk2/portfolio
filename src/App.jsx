@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaReact,
   FaVuejs,
@@ -118,15 +118,13 @@ function App() {
       >
         <h1 className="heading-animation" style={{ animationDelay: "0.2s", padding: "0px" }}>
           <strong>
-            Transform your ideas into Seamless{" "}
-            <span className="highlight" style={{ color: "#7F00FF" }}>
+            Transform your ideas into Seamless <div className="highlights" style={{ color: "#7F00FF" }}>
               User Experiences
-            </span>
+            </div>
           </strong>
         </h1>
         <h2 className="heading-animation" style={{ animationDelay: "0.2s" }}>
-          Hi, I'm <strong>Muhammad Uwais Karim</strong> — a passionate{" "}
-          <strong>software developer</strong> crafting <strong>modern applications and Websites</strong>.
+          Hi, I'm <strong>Muhammad Uwais Karim</strong> — a passionate <strong>software developer</strong> crafting <strong>modern applications and Websites</strong>.
         </h2>
         <button
           className="main-button fade-in"
