@@ -456,7 +456,7 @@ function App() {
             <p>A modern portfolio website built with React and CSS, showcasing projects and skills.</p>
             <div className="project-card-footer">
               <div className="tech-stack"><FaReact className="tech-icon" /><FaVuejs className="tech-icon" /></div>
-              <a href="#" className="live-site-link">Live Site → <FaGlobe /></a>
+              <a href="https://github.com/muwaisk2/portfolio" className="live-site-link">Live Site → <FaGlobe /></a>
             </div>
           </div>
 
