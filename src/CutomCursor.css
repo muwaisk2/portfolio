@@ -1,0 +1,31 @@
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
+  background: linear-gradient(
+    135deg,
+    #0acf83,
+    #a259ff,
+    #f24e1e,
+    #ff7262
+  );
+  background-size: 300% 300%;
+  animation: gradientMove 3s infinite linear, cursorPulse 1.5s infinite ease-in-out;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes cursorPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}

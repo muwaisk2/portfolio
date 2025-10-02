@@ -8,8 +8,9 @@
   display: flex;
   justify-content: center;
   padding: 1rem 0;
-  background-color: non-transparent; /* non-transparent background */
-  backdrop-filter: blur(6px); /* subtle blur behind navbar */
+  background-color: semi-transparent;
+  transition: background-color 0.3s;/* semi-transparent background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle blur behind navbar */
 }
 
 /* Links wrapper with rounded semi-transparent box */

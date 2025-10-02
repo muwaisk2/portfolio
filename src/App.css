@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 /* Body & Background */
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -13,6 +17,7 @@ html, body {
   color: #e0eaff;
   min-height: 100vh;
   overflow-x: hidden;
+  scroll-padding-top: 2rem;
 }
 
 #root {
@@ -21,6 +26,8 @@ html, body {
   padding: 2rem;
   position: relative;
   z-index: 1;
+  animation: slideIn 0.5s ease forwards;
+  -webkit-animation: slideIn 0.5s ease forwards;
 }
 
 /* Background code lines */
@@ -33,6 +40,7 @@ html, body {
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
+  background: blur(10px);
 }
 
 .code-line {
@@ -60,16 +68,38 @@ html, body {
   align-items: center;
   text-align: center;
   padding: 0 20px;
+  background: transparent;
 }
 
-.App-heading h1 {
+.App-heading::before {
+  display: none;
+}
+
+.main-heading {
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  position: relative;
+}
+
+.main-heading strong {
   background: linear-gradient(90deg, #00d4ff, #4da6ff, #007bff);
+  background-size: 200% auto;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradientFlow 5s linear infinite;
+  display: inline-block;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .App-heading h2 {
@@ -82,21 +112,105 @@ html, body {
 
 /* CTA Button */
 .main-button {
-  font-weight: 600;
-  border-radius: 12px;
+  font-weight: 800;
+  border-radius: 15px;
   padding: 0.9em 2em;
   font-size: 1rem;
-  background: #0d6efd;
   color: #fff;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+
+  /* Breathing animation */
+  animation: breathing 1s ease-in-out infinite;
+
+  /* Gradient background */
+  background: linear-gradient(90deg, #007bff, #4da6ff, #00d4ff);
+  background-size: 200% 200%;
 }
 
 .main-button:hover {
-  background: #0056b3;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,123,255,0.3);
+  /* Shift gradient on hover */
+  background-position: 100% 0;
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+  }
+}
+
+/* Updated animation durations */
+.fade-in {
+  animation-duration: 1s !important;
+}
+
+.heading-animation {
+  animation-duration: 1s !important;
+}
+
+.info-block {
+  animation-duration: 1s !important;
+}
+
+.project-card {
+  transition-duration: 1s !important;
+}
+
+.experience-card {
+  transition-duration: 1s !important;
+}
+
+.typewriter-container {
+  animation-duration: 1s !important;
+}
+
+.main-button {
+  animation-duration: 1s !important;
+}
+
+.scroll-down {
+  animation-duration: 1s !important;
+}
+
+.review-section {
+  animation-duration: 1s !important;
+}
+
+.approach-card {
+  transition-duration: 0.5s !important;
+}
+
+.cta-section {
+  animation-duration: 0.5s !important;
+}
+.main-button:hover {
+  background: linear-gradient(90deg, #00d4ff, #4da6ff, #007bff);
+  transform: translateY(5px);
+  -webkit-transform: translateY(5px);
+  -moz-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  -o-transform: translateY(5px);
+  color: black;
+  font-size: 1.2rem;
+  font-family: 'American Typewriter', serif;
+  animation: hoverGlow 1.5s infinite;
+  -webkit-animation: hoverGlow 1.5s infinite;
+}
+
+@keyframes hoverGlow {
+  0% { box-shadow: 0 0 10px #00d4ff; }
+  50% { box-shadow: 0 0 20px #00d4ff; }
+  100% { box-shadow: 0 0 10px #00d4ff; }
 }
 
 /* Scroll Down Indicator */
@@ -114,16 +228,11 @@ html, body {
 
 /* Info Blocks Section */
 .info-blocks-section {
-  position: relative;
-  z-index: 10;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* wrap to next line if needed */
+  gap: 20px;       /* space between blocks */
   justify-content: center;
-  gap: 1.5rem;
-  margin: 3rem 2rem;
-  opacity: 0;
-  animation: fadeInBlocks 1.2s ease forwards;
-  animation-delay: 0.5s;
+  padding: 16px 24px;
 }
 
 @keyframes fadeInBlocks {
@@ -140,13 +249,14 @@ html, body {
   flex: 1;
   color: #e0eaff;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   cursor: default;
 }
 
 .info-block:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+  color: black;
 }
 
 .copy-email-block {
@@ -160,6 +270,7 @@ html, body {
 .copy-email-block:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+  color: black;
 }
 
 /* Recent Projects Grid */
@@ -202,7 +313,7 @@ html, body {
   padding: 2rem;
   color: #e0eaff;
   box-shadow: 0 4px 20px rgba(0,0,0,0.45);
-  transition: all 0.35s ease;
+  transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -262,7 +373,7 @@ html, body {
   height: 28px;
   object-fit: contain;
   filter: grayscale(100%) brightness(1.6) opacity(0.85);
-  transition: filter 0.3s, transform 0.2s;
+  transition: filter 0.2s, transform 0.2s;
 }
 
 .tech-icon:hover {
@@ -1056,15 +1167,19 @@ html, body {
 .heading-animation {
   opacity: 0;
   transform: translateY(-20px);
-  animation: fadeSlideDown 1s forwards;
+  animation: fadeSlideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .heading-animation:nth-child(2) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 
 @keyframes fadeSlideDown {
-  to {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1085,14 +1200,71 @@ html, body {
 }
 
 /* Info blocks hover */
+.info-block {
+  position: relative;
+  overflow: hidden;
+}
+
+.info-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.info-block {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(24, 28, 43, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-block::before,
+.info-block::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #00d4ff, #4da6ff, #007bff, #00d4ff);
+  background-size: 400%;
+  z-index: -1;
+  animation: gradientBorder 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+}
+
+.info-block::after {
+  filter: blur(12px);
+}
+
 .info-block:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
-  transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 212, 255, 0.4);
+}
+
+.info-block:hover::before,
+.info-block:hover::after {
+  opacity: 1;
+}
+
+@keyframes gradientBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.info-block:hover::before {
+  left: 100%;
 }
 .github-link {
   display: flex;
@@ -1130,7 +1302,7 @@ html, body {
   margin: 6rem auto;
   max-width: 1000px;
   padding: 0 1rem;
-  animation: fadeInUp 1.2s ease forwards;
+  animation: fadeInUp 0.5s ease forwards;
 }
 
 .testimonials-title {
@@ -1448,7 +1620,7 @@ html, body {
 }
 .experience-card:hover {
   box-shadow: 0 12px 30px rgba(0,123,255,0.4);
-  transaform: translateY(-8px);
+  transform: translateY(-8px);
 }
 /* Timeline Arrows */
 .timeline-arrow {
@@ -1587,6 +1759,66 @@ html, body {
   background: #8250e6;
 }
 
+/* Enhanced Heading Styles */
+.App-heading {
+  position: relative;
+  isolation: isolate;
+  margin-bottom: 2rem;
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+.main-heading {
+  color: white !important;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+  opacity: 1 !important;
+  margin: 1rem 0 !important;
+}
+
+.main-heading strong {
+  background: linear-gradient(90deg, #00d4ff, #4da6ff, #007bff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+}
+
+.sub-heading {
+  color: #e0eaff !important;
+  font-size: 1.2rem !important;
+  margin: 1.5rem 0 !important;
+  opacity: 0.95 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sub-heading strong {
+  color: #00d4ff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+}
+
+.typewriter-container {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.typewriter-text {
+  color: #00d4ff !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+}
+
 /* Footer */
 .footer {
   margin-top: 3rem;
@@ -1715,21 +1947,56 @@ h1, h2, h3 {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
 }
 
 /* === Heading Section === */
 .App-heading {
   text-align: center;
   padding: 100px 20px 60px 20px;
+  animation: scaleIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .heading-animation {
-  animation: fadeInUp 1s forwards;
+  animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+  -webkit-transform: translateY(30px);
+  -moz-transform: translateY(30px);
+  -ms-transform: translateY(30px);
+  -o-transform: translateY(30px);
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 .main-button {
@@ -2100,7 +2367,7 @@ h1, h2, h3 {
   z-index: 9999;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   opacity: 0;
-  animation: fadeInOut 2.5s forwards;
+  animation: fadeInOut 1s forwards;
 }
 
 /* Fade-in and fade-out animation */
@@ -2212,4 +2479,66 @@ button, .main-button, .github-btn {
   h1 { font-size: 1.6rem; }
   h2 { font-size: 1rem; }
   button { padding: 0.5em 1em; }
+}
+.typewriter-container {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  animation: 0.5s ease-in-out fadeIn 1s forwards;
+  -webkit-animation: 0.5s ease-in-out fadeIn 1s forwards;
+  animation-delay: 1s;
+}
+.typewriter-text {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  font-weight: 3000;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: white;
+  margin-left: 3px;
+  font-weight: 750;
+  animation: blink 0.9s step-start infinite;
+  -webkit-animation: blink 0.9s step-start infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+} 
+.info-block svg {
+  color: #00BFFF; /* default color */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.info-block:hover svg {
+  color: black;
+  /*changecoloronhover*/transform: scale(1.1);
+  transition: color 0.3s ease, transform 0.3s ease;
+  fill: black;
+}
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;             /* slim like Figma’s cursor */
+  height: 1.2em;          /* matches text height */
+  margin-left: 2px;
+  background: linear-gradient(180deg, #0acf83, #a259ff, #f24e1e, #ff7262);
+  border-radius: 2px;
+  animation: blink 0.9s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
 }
