@@ -24,7 +24,7 @@
 /* Welcome text animation */
 .loading-screen h1 {
   font-family: "Brush Script MT", cursive;
-  font-size: 3rem;
+  font-size: 50px;
   font-weight: 500;
   margin-bottom: 20px;
   background: linear-gradient(90deg, #00BFFF, #13ff4e);
@@ -52,7 +52,8 @@
 .loading-icon {
   opacity: 0;
   transform: scale(0.5);
-  animation: iconBounce 0.8s ease forwards;
+  animation: iconBounce 0.10s ease forwards;
+  -webkit-animation: iconBounce 0.10s ease forwards;
 }
 
 .loading-icon:nth-child(1) { animation-delay: 0.3s; }
@@ -61,7 +62,7 @@
 .loading-icon:nth-child(4) { animation-delay: 1.2s; }
 
 @keyframes iconBounce {
-  0%   { opacity: 0; transform: scale(0.5); }
+  0%   { opacity: 0; transform: scale(0.5); -webkit-transform: scale(0.5); -moz-transform: scale(0.5); -ms-transform: scale(0.5); -o-transform: scale(0.5); }
   60%  { opacity: 1; transform: scale(1.2); }
   100% { transform: scale(1); }
 }
@@ -114,5 +115,6 @@
 .loading-exit {
   transform: translateY(-120%);
   opacity: 0;
+  font-size: 50px;
   transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
 }
