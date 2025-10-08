@@ -452,21 +452,21 @@ function App() {
         <div className="recent-projects-grid">
           <div className="project-card fade-in" style={{ animationDelay: "2.5s" }}>
             <div className="project-icon"><FaFolder size={60} /></div>
-            <h3>Portfolio Website</h3>
-            <p>A modern portfolio website built with React and CSS, showcasing projects and skills.</p>
+            <h3>Muhammad Uwais Karim's Personal Brand Website</h3>
+            <p>A modern and sleek website that showcases my personal brand and portfolio, built with React, Vite, Javascript, HTML and CSS.</p>
             <div className="project-card-footer">
               <div className="tech-stack"><FaReact className="tech-icon" /><FaVuejs className="tech-icon" /></div>
-              <a href="https://github.com/muwaisk2/portfolio" className="live-site-link">Live Site → <FaGlobe /></a>
+              <a href="https://muhammad-uwais-karim-s-brand-websit.vercel.app/" className="live-site-link">Live Site → <FaGlobe /></a>
             </div>
           </div>
 
           <div className="project-card fade-in" style={{ animationDelay: "2.7s" }}>
             <div className="project-icon"><FaFolder size={60} /></div>
-            <h3>Quran Learning App</h3>
-            <p>An app to help users learn Quranic verses with interactive quizzes and progress tracking. Includes Full Quran, Duas Kitaab, and audio support.</p>
+            <h3>1st Choice Prepaid</h3>
+            <p>A small business owner that showcases their services and products through a dedicated web platform.</p>
             <div className="project-card-footer">
               <div className="tech-stack"><FaReact className="tech-icon" /><FaNodeJs className="tech-icon" /></div>
-              <a href="https://github.com/muwaisk2/Towards-Learning-the-Quran-Part-2-" className="live-site-link" target="_blank" rel="noreferrer">Live Site → <FaGlobe /></a>
+              <a href="https://1st-choice-prepaid-website.vercel.app/" className="live-site-link" target="_blank" rel="noreferrer">Live Site → <FaGlobe /></a>
             </div>
           </div>
         </div>
@@ -589,3 +589,4 @@ function App() {
 }
 
 export default App;
+
